@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Question Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Question List</h1>
+    <a href="/new">Create New Question</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Question ID</th>
+            <th>Body</th>
+            <th>Answer</th>
+            <th>Topic</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="question : ${listQuestions}">
+            <td th:text="${question.id}">Question ID</td>
+            <td th:text="${question.body}">Question</td>
+            <td th:text="${question.answer}">Answer</td>
+            <td th:text="${question.topic}">Topic</td>
+            <td>
+                <a th:href="@{'/edit/' + ${question.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${question.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
